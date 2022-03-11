@@ -20,7 +20,7 @@ if len(all_session) < 1:
 print("tìm thấy {} Tài Khoản\n".format(len(all_session))) 
 #phone  = "+84365099729"#input("Nhập số điện thoại: ") 
 def sendmsg(client,msg): 
- client.send_message("@AvaStationAirdropbot",msg) 
+ client.send_message("@htrlabs",msg) 
 def get_or_create_eventloop():
     try:
         return asyncio.get_event_loop()
@@ -42,89 +42,7 @@ def runSS(sess):
       client.send_code_request(sess) 
       client.sign_in(sess, input('Nhập Mã Code Đăng Nhập: ')) 
    #bufview
-           
-   #client(JoinChannelRequest("@TMVenturesChannel")) 
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("Crypto_Girl_ann"),
-     id=[70],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("Crypto_Gems_ann"),
-     id=[78],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("Fusion_Crypto"),
-     id=[77],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("DevB_ann"),
-     id=[78],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("NFT_Adventure"),
-     id=[78],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("Milan_ann"),
-     id=[81],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("King_OfNFT"),
-     id=[69],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("Cryptoo_Time"),
-     id=[71],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("Crypto_Bullett"),
-     id=[70],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("TheHawkP2E"),
-     id=[76],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("crypto_santa_ann"),
-     id=[69],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("Crypto_Moon_gems"),
-     id=[70],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("CryptoWorld_P2E"),
-     id=[72],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("host_nft"),
-     id=[79],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("VRM_ventures_ann"),
-     id=[90],
-     increment=True
-   ))
-   client(GetMessagesViewsRequest(
-     peer=client.get_entity("CryptoNew_Daily"),
-     id=[71],
-     increment=True
-   ))
-
+   sendmsg(client,"hello")
 
 
    
