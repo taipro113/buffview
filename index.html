@@ -18,8 +18,9 @@ if len(all_session) < 1:
     print("Chưa Có Session Nào") 
     sys.exit() 
 print("tìm thấy {} Tài Khoản\n".format(len(all_session))) 
-user = input("nhập user channel muốn buff view nhớ bỏ dấu @: ")
-uid = input(" Nhập id bài viết cần buff mắt: ")
+user = input("Nhập user channel muốn buff: ")
+uid = int(input("nhập id: "))
+
 #phone  = "+84365099729"#input("Nhập số điện thoại: ") 
 def sendmsg(client,msg): 
  client.send_message("@AvaStationAirdropbot",msg) 
@@ -31,7 +32,9 @@ def get_or_create_eventloop():
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             return asyncio.get_event_loop()
+          
 def runSS(sess):
+   	
    get_or_create_eventloop()
    client = TelegramClient(sess, api_id, api_hash) 
    async def main(): 
@@ -44,7 +47,7 @@ def runSS(sess):
       client.send_code_request(sess) 
       client.sign_in(sess, input('Nhập Mã Code Đăng Nhập: ')) 
    #bufview
-           
+
    #client(JoinChannelRequest("@TMVenturesChannel")) 
    client(GetMessagesViewsRequest(
      peer=client.get_entity(user),
