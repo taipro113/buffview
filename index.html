@@ -1,0 +1,135 @@
+from telethon.sync import TelegramClient 
+from telethon.tl.functions.messages import GetDialogsRequest 
+from telethon.tl.types import InputPeerEmpty 
+from time import sleep 
+from telethon.tl.functions.channels import JoinChannelRequest 
+import os,sys 
+import glob 
+import requests
+from telethon.tl.functions.messages import GetMessagesViewsRequest
+import threading
+import asyncio
+api_id = 1219091 #lấy app id tại https://my.telegram.org 
+api_hash = '736de9a1ae41e52ef2dd5a2cde7eaad9' #lấy api hash tại https://my.telegram.org   
+# lấy tất cả file có đuôi .session 
+all_session = glob.glob('*.session')
+# kiểm tra nếu ko có file sẽ dừng 
+if len(all_session) < 1: 
+    print("Chưa Có Session Nào") 
+    sys.exit() 
+print("tìm thấy {} Tài Khoản\n".format(len(all_session))) 
+#phone  = "+84365099729"#input("Nhập số điện thoại: ") 
+def sendmsg(client,msg): 
+ client.send_message("@AvaStationAirdropbot",msg) 
+def get_or_create_eventloop():
+    try:
+        return asyncio.get_event_loop()
+    except RuntimeError as ex:
+        if "There is no current event loop in thread" in str(ex):
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            return asyncio.get_event_loop()
+def runSS(sess):
+   get_or_create_eventloop()
+   client = TelegramClient(sess, api_id, api_hash) 
+   async def main(): 
+      # gửi tin nhắn test 
+      await client.send_message('me', 'Hello nhóc') 
+   with client: 
+      client.loop.run_until_complete(main()) 
+   client.connect() 
+   if not client.is_user_authorized(): 
+      client.send_code_request(sess) 
+      client.sign_in(sess, input('Nhập Mã Code Đăng Nhập: ')) 
+   #bufview
+           
+   #client(JoinChannelRequest("@TMVenturesChannel")) 
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("Crypto_Girl_ann"),
+     id=[70],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("Crypto_Gems_ann"),
+     id=[78],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("Fusion_Crypto"),
+     id=[77],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("DevB_ann"),
+     id=[78],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("NFT_Adventure"),
+     id=[78],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("Milan_ann"),
+     id=[81],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("King_OfNFT"),
+     id=[69],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("Cryptoo_Time"),
+     id=[71],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("Crypto_Bullett"),
+     id=[70],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("TheHawkP2E"),
+     id=[76],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("crypto_santa_ann"),
+     id=[69],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("Crypto_Moon_gems"),
+     id=[70],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("CryptoWorld_P2E"),
+     id=[72],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("host_nft"),
+     id=[79],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("VRM_ventures_ann"),
+     id=[90],
+     increment=True
+   ))
+   client(GetMessagesViewsRequest(
+     peer=client.get_entity("CryptoNew_Daily"),
+     id=[71],
+     increment=True
+   ))
+
+
+
+   
+   client.disconnect()
+   print(f"Xong sesssion {sess}")
+for ss in all_session:
+	t = threading.Thread(target=runSS,args=(ss,))
+	t.start()
